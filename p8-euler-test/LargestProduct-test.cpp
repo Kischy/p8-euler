@@ -14,8 +14,9 @@ TEST(LargestProductClass, Exists) {
 }
 
 
-TEST_F(LargestProductTester, LargestMultipleOf3digitString) {
+TEST_F(LargestProductTester, LargestMultipleOfwith2Digits) {
 	
-	ASSERT_EQ(largestproduct.get_largest_product("991"), 81LL);
+	//ASSERT_EQ(largestproduct.get_largest_product("199", 2), 81LL);
+	ASSERT_EQ(largestproduct.get_largest_product("81435", 2), 15LL);
 }
 
