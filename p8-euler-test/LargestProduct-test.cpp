@@ -42,6 +42,7 @@ TEST_F(LargestProductTester, ReturnsZeroOnToSmallString) {
 
 TEST_F(LargestProductTester, ReturnsZeroOnNonNumberString) {
 
-	ASSERT_EQ(largestproduct.get_largest_product("ABC", 2), 0LL);
+	ASSERT_EQ(largestproduct.get_largest_product("123:", 2), 0LL);
+	ASSERT_EQ(largestproduct.get_largest_product("321/", 2), 0LL);
 }
 

@@ -9,12 +9,32 @@ public:
 	{
 		if (is_string_to_small(number_str, number_of_digits)) return 0;
 
+		if (!is_string_a_number(number_str)) return 0;
+
 		return get_max_product(number_str,number_of_digits);
 	}
 
 
 
 private:
+
+	bool is_string_a_number(const std::string& number_str) const
+	{
+
+		for (char letter : number_str)
+		{
+			if (!is_number(letter)) return false;
+		}
+
+		return true;
+	}
+
+	bool is_number(const char letter) const
+	{
+		if ((letter < '0') || (letter > '9')) return false;
+
+		return true;
+	}
 
 
 	bool is_string_to_small(const std::string& number_str, const size_t number_of_digits) const
