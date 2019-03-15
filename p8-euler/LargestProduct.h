@@ -5,35 +5,34 @@ class LargestProduct
 {
 public:
 
-	unsigned long long get_largest_product(const std::string& number_str, size_t number_of_digits)
+	unsigned long long get_largest_product(const std::string& number_str, const size_t number_of_digits) const
 	{
-		return get_product(number_str);
+		if (is_string_to_small(number_str, number_of_digits)) return 0;
+
+		return get_max_product(number_str,number_of_digits);
 	}
 
 
 
 private:
 
-	unsigned long long get_product(const std::string& number_str)
+
+	bool is_string_to_small(const std::string& number_str, const size_t number_of_digits) const
 	{
-		size_t number_of_digits = 2;
-		unsigned long long max_pr = 0, product = 1;
+		return number_of_digits > number_str.length();
+	}
 
-		for (size_t i = 0; i < number_str.length(); i++)
+	unsigned long long get_max_product(const std::string& number_str, const size_t number_of_digits) const
+	{
+		unsigned long long max_pr = 0, pr = 1;
+
+		for (size_t pos = 0; pos < number_str.length(); ++pos)
 		{
-			if (is_substring_in_range(number_str,number_of_digits,i) == true)
+			if (is_substring_in_range(number_str,number_of_digits,pos) == true)
 			{
-				std::string digits = number_str.substr(i, number_of_digits);
+				pr = get_product(number_str.substr(pos, number_of_digits));
 
-				product = 1;
-
-				for (char letter : number_str)
-				{
-					unsigned long long digit = letter - 48;
-					product *= digit;
-				}
-
-				if (max_pr < product) max_pr = product;
+				if (max_pr < pr) max_pr = pr;
 
 			}
 			else
@@ -49,7 +48,22 @@ private:
 	}
 
 
-	bool is_substring_in_range(const std::string& number_str, size_t number_of_digits, size_t pos)
+
+	unsigned long long get_product(const std::string& digits) const
+	{
+		unsigned long long pr = 1, digit = 1;
+
+		for (char letter : digits)
+		{
+			digit = letter - 48;
+			pr *= digit;
+		}
+
+		return pr;
+	}
+
+
+	bool is_substring_in_range(const std::string& number_str, const size_t number_of_digits, const size_t pos) const
 	{
 		return ((pos + number_of_digits) <= (number_str.length()) );
 	}
