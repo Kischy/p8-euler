@@ -75,7 +75,7 @@ private:
 
 		for (char letter : digits)
 		{
-			digit = letter - 48;
+			digit = letter - '0';
 			pr *= digit;
 		}
 

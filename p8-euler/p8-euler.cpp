@@ -8,7 +8,7 @@
 
 int main(int argc, char **argv)
 {
-	unsigned int p8_answ = 0;
+	unsigned long long p8_answ = 0;
 
 	LargestProduct largestproduct;
 	
